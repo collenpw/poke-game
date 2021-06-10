@@ -1,0 +1,11 @@
+body {
+    background: cadetblue;
+}
+
+.hidden {
+    display: none;
+}
+
+#currentPoke {
+    display: contents;
+}
