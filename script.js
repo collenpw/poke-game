@@ -29,7 +29,7 @@ class MyPokemon extends Pokemon {
         pokeDiv.classList.add(this.name, 'hidden');
         myTeam.appendChild(pokeDiv);
         const pokeImg = document.createElement('div');
-        pokeImg.innerHTML = `<img class='sprite' src="/sprites/${this.name}.png" alt="${this.name}">`
+        pokeImg.innerHTML = `<img class='sprite' src="sprites/${this.name}.png" alt="${this.name}">`
         pokeDiv.appendChild(pokeImg);
         const pokeName = document.createElement('h2');
         pokeName.classList.add (`${this.name}-name`);
@@ -60,7 +60,7 @@ class CynthiaPokemon extends Pokemon {
         pokeDiv.classList.add(this.name, 'hidden');
         cynthiaTeam.appendChild(pokeDiv);
         const pokeImg = document.createElement('div');
-        pokeImg.innerHTML = `<img src="/sprites/${this.name}.png" alt="${this.name}">`
+        pokeImg.innerHTML = `<img src="sprites/${this.name}.png" alt="${this.name}">`
         pokeDiv.appendChild(pokeImg);
         const pokeName = document.createElement('h2');
         pokeName.classList.add (`${this.name}-name`);

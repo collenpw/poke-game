@@ -1,5 +1,5 @@
 body {
-    background: url(/sprites/background.png);
+    background: url(sprites/background.png);
     font-family: 'Common Pixel', sans-serif;
     background-size: cover;
 }
