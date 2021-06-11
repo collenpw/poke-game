@@ -2,6 +2,8 @@ const myTeam = document.querySelector('.myTeam');
 const gameDiv = document.querySelector('.game');
 const pokeSelect = document.querySelectorAll('.pokeSelect')
 const cynthiaTeam = document.querySelector('.cynthiaTeam');
+// const myMoves = document.querySelectorAll('.move');
+// const cynthiaMoves = document.querySelectorAll('.cynthia-move');
 
 class Pokemon {
     constructor(name, hp, moves) {
@@ -179,12 +181,29 @@ const handlePokemonAttack = (e) => {
    if (myTeamArr.length > 0 && cynthiaPokeTeam.length > 0) {
     if (e.target.classList.contains('move')) {
 
+        // for (let i = 0; i < cynthiaMoves.length; i++) {
+        //     cynthiaMoves[i].disabled = false;
+        // }
+
         myCurrentPoke.dealDamage(cynthiaCurrentPoke, e.target.dataset.damage);
         cynthiaCurrentPoke.updateStats();
 
+        // for (let i = 0; i < myMoves.length; i++) {
+        //     myMoves[i].disabled = true;
+        // }
+
     } else if (e.target.classList.contains('cynthia-move')) {
+
+        // for (let i = 0; i < myMoves.length; i++) {
+        //     myMoves[i].disabled = false;
+        // }
+
         cynthiaCurrentPoke.dealDamage(myCurrentPoke, e.target.dataset.damage);
         myCurrentPoke.updateStats();
+
+        // for (let i = 0; i < cynthiaMoves.length; i++) {
+        //     cynthiaMoves[i].disabled = true;
+        // }
 
     }
     if (myCurrentPoke.hp <= 0) {
