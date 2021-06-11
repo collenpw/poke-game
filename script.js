@@ -29,11 +29,11 @@ class MyPokemon extends Pokemon {
         pokeDiv.classList.add(this.name, 'hidden');
         myTeam.appendChild(pokeDiv);
         const pokeImg = document.createElement('div');
-        pokeImg.innerHTML = `<img src="/sprites/${this.name}.png" alt="${this.name}">`
+        pokeImg.innerHTML = `<img class='sprite' src="/sprites/${this.name}.png" alt="${this.name}">`
         pokeDiv.appendChild(pokeImg);
         const pokeName = document.createElement('h2');
         pokeName.classList.add (`${this.name}-name`);
-        pokeName.innerHTML = `${this.name} HP:${this.hp}`;
+        pokeName.innerHTML = `${this.name} HP: ${this.hp}`;
         pokeDiv.appendChild(pokeName);
         const moveList = document.createElement('ul');
         pokeDiv.appendChild(moveList);
@@ -64,7 +64,7 @@ class CynthiaPokemon extends Pokemon {
         pokeDiv.appendChild(pokeImg);
         const pokeName = document.createElement('h2');
         pokeName.classList.add (`${this.name}-name`);
-        pokeName.innerHTML = `${this.name} HP:${this.hp}`;
+        pokeName.innerHTML = `${this.name} HP: ${this.hp}`;
         pokeDiv.appendChild(pokeName);
         const moveList = document.createElement('ul');
         pokeDiv.appendChild(moveList);
@@ -158,18 +158,39 @@ cynthiaPokeTeam.push(milotic);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const handleEvent = (e) => {
+const youWin = () => {
+    gameDiv.style.fontSize = '200px'
+    gameDiv.innerHTML = `<p class='message'>YOU WIN!</p><button class='reset'>RESET</button>`;
+    const reset = document.querySelector('.reset');
+    reset.addEventListener('click', function (){
+    location.reload()})
+
+}
+
+const youLose = () => {
+    gameDiv.style.fontSize = '200px'
+    gameDiv.innerHTML = `<p class='message'>YOU LOSE!</p><button class='reset'>RESET</button>`;
+    const reset = document.querySelector('.reset');
+    reset.addEventListener('click', function (){
+    location.reload()})
+
+}
+
+
+
+
+
+const handlePokemonAttack = (e) => {
     e.preventDefault();
 
+   if (myTeamArr.length > 0 && cynthiaPokeTeam.length > 0) {
     if (e.target.classList.contains('move')) {
 
         myCurrentPoke.dealDamage(cynthiaCurrentPoke, e.target.dataset.damage);
-        // console.log(e.target.dataset.damage);
         cynthiaCurrentPoke.updateStats();
 
     } else if (e.target.classList.contains('cynthia-move')) {
         cynthiaCurrentPoke.dealDamage(myCurrentPoke, e.target.dataset.damage);
-        // console.log(myCurrentPoke.hp);
         myCurrentPoke.updateStats();
 
     }
@@ -178,6 +199,10 @@ const handleEvent = (e) => {
         document.querySelector(`.${myCurrentPoke.name}`).remove();
         myTeamArr.splice(idx, 1)
         console.log(myTeamArr);
+        if (myTeamArr.length === 0) {
+            youLose()
+            return;
+        }
         chooseMyPokemon();
        }
     if (cynthiaCurrentPoke.hp <= 0) {
@@ -185,10 +210,24 @@ const handleEvent = (e) => {
         document.querySelector(`.${cynthiaCurrentPoke.name}`).remove();
         cynthiaPokeTeam.splice(idx, 1)
         console.log(cynthiaPokeTeam);
+        if (cynthiaPokeTeam.length === 0) {
+            youWin();
+            return;
+        }
         chooseCynthiasPokemon();
        }
+    if (myTeamArr.length === 0) {
+        youlose();
+    } else if (cynthiaPokeTeam.length === 0) {
+        youWin();
+        console.log('you win');
+    }
 }
 
+else {
+    console.log('ahah');
+}
+}
 let myCurrentPoke;
 let cynthiaCurrentPoke;
 
@@ -207,6 +246,8 @@ const chooseCynthiasPokemon = () => {
 }
 chooseCynthiasPokemon();
 
-
-cynthiaTeam.addEventListener('click', handleEvent)
-myTeam.addEventListener('click', handleEvent);
+// const reset = document.querySelector('.reset');
+// reset.addEventListener('click', function (){
+//     location.reload()})
+cynthiaTeam.addEventListener('click', handlePokemonAttack)
+myTeam.addEventListener('click', handlePokemonAttack);

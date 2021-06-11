@@ -1,5 +1,7 @@
 body {
-    background: cadetblue;
+    background: url(/sprites/background.png);
+    font-family: 'Common Pixel', sans-serif;
+    background-size: cover;
 }
 
 .hidden {
@@ -9,3 +11,72 @@ body {
 #currentPoke {
     display: contents;
 }
+
+div {
+    display: inline-block;
+}
+
+.flex-container {
+    /* display: inline-flex; */
+    /* width: 100%; */
+    /* justify-content: space-between; */
+
+    display: grid;
+    /* grid-template-columns: 500px 180px 180px 500px; */
+    grid-template-columns: 1fr 1fr;
+}
+
+.cynthiaTeam {
+    /* margin-left: 1000px; */
+    padding-right: 0;
+    grid-column: 2;
+    text-align: center;
+}
+
+.myTeam {
+    text-align: center;
+}
+
+button {
+    font-size: larger;
+    border-radius: 4px;
+    background-color: rgb(39, 70, 71);
+    color: white;
+}
+
+h2 {
+    font-size: 40px;
+    background: white;
+}
+
+img {
+    height: 100px;;
+}
+
+.sprite {
+    height: 100px;
+}
+
+ul {
+    list-style: none;
+}
+
+.game {
+    user-select: none;
+    width: 100%;
+}
+
+.message, .reset {
+    
+    /* margin-left:75%; */
+    /* display: inline-block; */
+}
+
+.reset {
+    text-align: center;
+    /* margin-left: 55%; */
+}
+
+/* .page {
+    background: url(/sprites/background.png);
+} */
