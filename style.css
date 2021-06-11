@@ -44,9 +44,18 @@ button {
     color: white;
 }
 
+h1 {
+    background: white;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
 h2 {
     font-size: 40px;
     background: white;
+    max-width: 500px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 img {
