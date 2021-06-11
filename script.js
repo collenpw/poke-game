@@ -92,8 +92,8 @@ const infernapeDamage = [90, 100, 120, 110];
 infernape.createPoke(infernapeDamage);
 myTeamArr.push(infernape);
 
-const pikachu = new MyPokemon ('Pikachu', 250, ['earthquake', 'dragon pulse', 'dragon claw', 'outrage']);
-const pikachuDamage = [100, 90, 80, 70];
+const pikachu = new MyPokemon ('Pikachu', 250, ['thunderbolt', 'volt tackle', 'iron tail', 'quick attack']);
+const pikachuDamage = [90, 120, 100, 40];
 pikachu.createPoke(pikachuDamage);
 myTeamArr.push(pikachu);
 
@@ -107,8 +107,8 @@ const staraptorDamage = [90, 100, 120, 85];
 staraptor.createPoke(staraptorDamage);
 myTeamArr.push(staraptor);
 
-const bidoof = new MyPokemon ('Bidoof', 220, ['aura sphere', 'close combat', 'double kick', 'iron tail'])
-const bidoofDamage = [90, 120, 80, 70];
+const bidoof = new MyPokemon ('Bidoof', 220, ['hyper beam', 'close combat', 'double kick', 'iron tail'])
+const bidoofDamage = [150, 120, 80, 100];
 bidoof.createPoke(bidoofDamage);
 myTeamArr.push(bidoof);
 
@@ -144,7 +144,7 @@ roserade.createPoke(roseradeDamage);
 cynthiaPokeTeam.push(roserade);
 
 const lucario = new CynthiaPokemon ('Lucario', 220, ['aura sphere', 'close combat', 'double kick', 'iron tail'])
-const lucarioDamage = [90, 120, 80, 70];
+const lucarioDamage = [90, 120, 80, 100];
 lucario.createPoke(lucarioDamage);
 cynthiaPokeTeam.push(lucario);
 
