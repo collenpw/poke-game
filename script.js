@@ -2,8 +2,6 @@ const myTeam = document.querySelector('.myTeam');
 const gameDiv = document.querySelector('.game');
 const pokeSelect = document.querySelectorAll('.pokeSelect')
 const cynthiaTeam = document.querySelector('.cynthiaTeam');
-// const myMoves = document.querySelectorAll('.move');
-// const cynthiaMoves = document.querySelectorAll('.cynthia-move');
 
 class Pokemon {
     constructor(name, hp, moves) {
@@ -11,12 +9,12 @@ class Pokemon {
         this.hp = hp;
         this.moves = moves;
     }
-
+    
     takeDamage(damage) {
         this.hp -= damage;
         this.updateStats();
     }
-
+    
     dealDamage(target, damage) {
         target.hp -= damage;
         this.updateStats(target);       
@@ -25,7 +23,7 @@ class Pokemon {
 }
 
 class MyPokemon extends Pokemon {
-
+    
     createPoke(damage) {
         const pokeDiv = document.createElement('div');
         pokeDiv.classList.add(this.name, 'hidden');
@@ -39,25 +37,25 @@ class MyPokemon extends Pokemon {
         pokeDiv.appendChild(pokeName);
         const moveList = document.createElement('ul');
         pokeDiv.appendChild(moveList);
-
+        
         for(let i = 0; i < this.moves.length; i++) {
             const move = document.createElement('li');
             move.innerHTML = (`<button class='move' data-damage=${damage[i]}>${this.moves[i]}</button>`);
             moveList.appendChild(move);
         }
     }
-
+    
     updateStats() {
         let stat = document.querySelector(`.${myCurrentPoke.name}-name`);
         stat.innerText = `${myCurrentPoke.name} HP: ${myCurrentPoke.hp}`
     }
-
+    
 }
 
 class CynthiaPokemon extends Pokemon {
-
+    
     createPoke(damage) {
-
+        
         const pokeDiv = document.createElement('div');
         pokeDiv.classList.add(this.name, 'hidden');
         cynthiaTeam.appendChild(pokeDiv);
@@ -70,15 +68,15 @@ class CynthiaPokemon extends Pokemon {
         pokeDiv.appendChild(pokeName);
         const moveList = document.createElement('ul');
         pokeDiv.appendChild(moveList);
-
+        
         for(let i = 0; i < this.moves.length; i++) {
             const move = document.createElement('li');
             move.innerHTML = (`<button class='cynthia-move' data-damage=${damage[i]}>${this.moves[i]}</button>`);
             moveList.appendChild(move);
         }
-
+        
     }
-
+    
     updateStats() {
         let stat = document.querySelector(`.${cynthiaCurrentPoke.name}-name`);
         stat.innerText = `${cynthiaCurrentPoke.name} HP: ${cynthiaCurrentPoke.hp}`
@@ -157,18 +155,24 @@ cynthiaPokeTeam.push(milotic);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+const myMoves = document.querySelectorAll('.move');
+const cynthiaMoves = document.querySelectorAll('.cynthia-move');
+
+console.log(myMoves);
+console.log(cynthiaMoves)
+
 const youWin = () => {
     gameDiv.style.fontSize = '200px'
     gameDiv.innerHTML = `<p class='message'>YOU WIN!</p><button class='reset'>RESET</button>`;
     const reset = document.querySelector('.reset');
     reset.addEventListener('click', function (){
-    location.reload()})
-
-}
-
-const youLose = () => {
-    gameDiv.style.fontSize = '200px'
-    gameDiv.innerHTML = `<p class='message'>YOU LOSE!</p><button class='reset'>RESET</button>`;
+        location.reload()})
+        
+    }
+    
+    const youLose = () => {
+        gameDiv.style.fontSize = '200px'
+        gameDiv.innerHTML = `<p class='message'>YOU LOSE!</p><button class='reset'>RESET</button>`;
     const reset = document.querySelector('.reset');
     reset.addEventListener('click', function (){
     location.reload()})
@@ -181,29 +185,29 @@ const handlePokemonAttack = (e) => {
    if (myTeamArr.length > 0 && cynthiaPokeTeam.length > 0) {
     if (e.target.classList.contains('move')) {
 
-        // for (let i = 0; i < cynthiaMoves.length; i++) {
-        //     cynthiaMoves[i].disabled = false;
-        // }
+        for (let i = 0; i < cynthiaMoves.length; i++) {
+            cynthiaMoves[i].disabled = false;
+        }
 
         myCurrentPoke.dealDamage(cynthiaCurrentPoke, e.target.dataset.damage);
         cynthiaCurrentPoke.updateStats();
 
-        // for (let i = 0; i < myMoves.length; i++) {
-        //     myMoves[i].disabled = true;
-        // }
+        for (let i = 0; i < myMoves.length; i++) {
+            myMoves[i].disabled = true;
+        }
 
     } else if (e.target.classList.contains('cynthia-move')) {
 
-        // for (let i = 0; i < myMoves.length; i++) {
-        //     myMoves[i].disabled = false;
-        // }
+        for (let i = 0; i < myMoves.length; i++) {
+            myMoves[i].disabled = false;
+        }
 
         cynthiaCurrentPoke.dealDamage(myCurrentPoke, e.target.dataset.damage);
         myCurrentPoke.updateStats();
 
-        // for (let i = 0; i < cynthiaMoves.length; i++) {
-        //     cynthiaMoves[i].disabled = true;
-        // }
+        for (let i = 0; i < cynthiaMoves.length; i++) {
+            cynthiaMoves[i].disabled = true;
+        }
 
     }
     if (myCurrentPoke.hp <= 0) {
