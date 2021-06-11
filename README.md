@@ -20,14 +20,16 @@ Lessons/Ongoing Issues:
 
 Creating a 'Sandbox' Pokémon game
     
-    - Initially the game was supposed to be a create your own team type of game. After many API calls and object creations I realized that I didn't quite know how to handle all of that so I changed it to two already defined teams.
-    - I had issues picking an opponent move at random so I made it player vs. player although it originally was going to be player vs. computer
+    Initially the game was supposed to be a create your own team type of game. After many API calls and object creations I realized that I didn't quite know how to handle all of that so I changed it to two already defined teams.
+
+    I had issues picking an opponent move at random so I made it player vs. player although it originally was going to be player vs. computer
     
 Future Plans
 
-    - I have plans in the near future to create my original image where you pick your team to battle against Cynthia
-    - I also want to add types to all of the Pokémon and to the moves
+    I have plans in the near future to create my original image where you pick your team to battle against Cynthia
+
+    I also want to add types to all of the Pokémon and to the moves
 
 Lessons learned
 
-    - Start very simple. I had to restart this entire project a day before it's due date because I started with too much. In hindsight it may not have actually been too much if I was better at managing my time
+    Start very simple. I had to restart this entire project a day before it's due date because I started with too much. In hindsight it may not have actually been too much if I was better at managing my time
